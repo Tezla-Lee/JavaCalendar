@@ -1,6 +1,6 @@
 package calendar;
 
-import java.util.Scanner;
+import java.util.Scanner; // cmd + shift + m
 
 public class Sum {
 
