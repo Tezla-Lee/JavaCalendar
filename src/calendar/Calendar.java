@@ -23,12 +23,12 @@ public class Calendar {
 //				System.out.println();
 //			}
 //		}
-		
-		//해당하는 달의 일 수 출력 프로그램
+
+		// 해당하는 달의 일 수 출력 프로그램
 		Scanner scanner = new Scanner(System.in);
-		
+
 		System.out.println("달을 입력하세요.");
-		
+
 		// 방법 1 swtitch, case
 //		int month = scanner.nextInt();
 //		int days = 0;
@@ -41,11 +41,11 @@ public class Calendar {
 //				break;
 //		}
 //		System.out.printf("%d월은 %d일까지 있습니다.", month, days);
-		
+
 		// 방법 2 array
-		int[] maxDays = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-		int i = scanner.nextInt();
-		System.out.printf("%d월은 %d일까지 있습니다.", i, maxDays[i - 1]);
+		int[] maxDays = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+		int month = scanner.nextInt();
+		System.out.printf("%d월은 %d일까지 있습니다.", month, maxDays[month - 1]);
 	}
 
 }
