@@ -43,7 +43,7 @@ public class Calendar {
 				day += MAX_DAYS[i];
 			}
 		}
-		for (int i = 0; i < ((day + dayOfYear+1) % 7); i++) {
+		for (int i = 0; i < ((day + dayOfYear + 1) % 7); i++) {
 			System.out.print("   ");
 		}
 
@@ -51,7 +51,7 @@ public class Calendar {
 
 		for (int i = 1; i <= maxDay; i++) {
 			System.out.printf("%3d", i);
-			if ((i + day + dayOfYear+1) % 7 == 0) {
+			if ((i + day + dayOfYear + 1) % 7 == 0) {
 				System.out.println();
 			}
 		}
