@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class Prompt {
 
-	private final static String PROMPT = "cal> ";
-
 	public int parseDay(String week) {
 		if (week.equals("SU")) {
 			return 0;
@@ -33,7 +31,6 @@ public class Prompt {
 
 		int month = 1;
 		int year = 0;
-		int weekday = 0;
 
 		while (true) {
 			System.out.println("년도를 입력하세요.(exit: -1)");
@@ -52,12 +49,12 @@ public class Prompt {
 				System.out.println("ERROR !");
 				continue;
 			}
-			System.out.println("첫째 날의 요일을 입력하세요. (SU, MO, TU, WE, TH, FR, SA)");
-			System.out.print("WEEKDAY> ");
-			String str_weekday = scanner.next();
-			weekday = parseDay(str_weekday);
+//			System.out.println("첫째 날의 요일을 입력하세요. (SU, MO, TU, WE, TH, FR, SA)");
+//			System.out.print("WEEKDAY> ");
+//			String str_weekday = scanner.next();
+//			weekday = parseDay(str_weekday);
 
-			cal.printCalendar(year, month, weekday);
+			cal.printCalendar(year, month);
 		}
 
 		System.out.println("Bye !");
