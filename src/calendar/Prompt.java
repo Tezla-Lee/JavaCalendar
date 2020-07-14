@@ -1,5 +1,6 @@
 package calendar;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class Prompt {
@@ -34,20 +35,19 @@ public class Prompt {
 		}
 	}
 
-	public void runPROMPT() {
+	public void runPROMPT() throws ParseException {
 
 		printMenu();
 		Scanner scanner = new Scanner(System.in);
 		Calendar calendar = new Calendar();
 
-
 		while (true) {
 			System.out.println("명령 (1, 2, 3, h, q)");
 			String cmd = scanner.next();
 			if (cmd.equals("1")) {
-				cmdRegister();
+				cmdRegister(scanner, calendar);
 			} else if (cmd.equals("2")) {
-				cmdSearch();
+				cmdSearch(scanner, calendar);
 			} else if (cmd.equals("3")) {
 				cmdCal(scanner, calendar);
 			} else if (cmd.equals("h")) {
@@ -83,18 +83,37 @@ public class Prompt {
 		c.printCalendar(year, month);
 	}
 
-
-	private void cmdSearch() {
-		// TODO Auto-generated method stub
-
+	private void cmdSearch(Scanner s, Calendar c) {
+		System.out.println("[일정 검색]");
+		System.out.println("날짜를 입력해주세요. (YYYY-MM-DD)");
+		String date = s.next();
+		String plan = "";
+		try {
+			plan = c.searchPlan(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			System.err.println("일정 검색 중 오류가 발생했습니다.");
+		}
+		System.out.println(plan);
 	}
 
-	private void cmdRegister() {
-		// TODO Auto-generated method stub
-
+	private void cmdRegister(Scanner s, Calendar c) throws ParseException {
+		System.out.println("[새 일정 등록]");
+		System.out.println("날짜를 입력해주세요. (YYYY-MM-DD)");
+		String date = s.next();
+		String text = "";
+		System.out.println("일정을 입력해주세요.");
+		while (true) {
+			String word = s.next();
+			text += word + " ";
+			if (word.endsWith(";")) {
+				break;
+			}
+		}
+		c.registerPlan(date, text);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 		Prompt p = new Prompt();
 		p.runPROMPT();
